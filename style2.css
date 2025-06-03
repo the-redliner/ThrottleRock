@@ -1,0 +1,631 @@
+/* --- Modern & Sleek Adventure Theme CSS --- */
+
+/* Basic Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000; /* Optional: background for when video loads */
+    margin: 20px auto; /* Centers the container if it's not full width */
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.7;
+    color: #E0E0E0; /* Light grey text for dark backgrounds */
+    background-color: #121212; /* Very dark grey - main background */
+    -webkit-font-smoothing: antialiased; /* Smoother fonts */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px; /* Slightly wider for a modern feel */
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* --- Theme Colors (CSS Variables) --- */
+:root {
+    --bg-primary-dark: #121212;    /* Main very dark background */
+    --bg-secondary-dark: #1E1E1E;  /* Slightly lighter dark for cards/sections */
+    --text-primary-light: #F5F5F5; /* Main light text */
+    --text-secondary-light: #B0B0B0;/* Muted light text */
+    --accent-vibrant: #00BCD4;     /* Vibrant Cyan/Teal - main accent */
+    --accent-vibrant-darker: #0097A7;/* Darker shade of accent for hovers */
+    --accent-action: #FF6F00;      /* Energetic Orange for secondary CTAs or highlights */
+    --border-subtle: #333333;      /* Subtle border color */
+}
+
+/* Header & Navigation */
+header {
+    background: rgba(30, 30, 30, 0.85); /* Semi-transparent dark */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-primary-light);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--accent-vibrant); /* Use accent for the logo title */
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 30px;
+}
+
+header nav ul li a {
+    color: var(--text-primary-light);
+    text-decoration: none;
+    font-weight: 600; /* Poppins medium/semibold */
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 8px;
+}
+header nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-vibrant);
+    transition: width 0.3s ease;
+}
+
+header nav ul li a:hover::after,
+header nav ul li a.active::after { /* Add 'active' class via JS if needed */
+    width: 100%;
+}
+header nav ul li a:hover {
+    color: var(--accent-vibrant);
+}
+.company_log{
+    display: inline-block;
+    width: 250px;
+    background-image: url(./model1-removebg-preview.png);
+    height: 65px;
+    background-position: center;
+    background-size: 180px;
+}
+/* --- ADD THESE STYLES for Hamburger Menu --- */
+
+/* Hamburger Icon Styling */
+.mobile-nav-toggle {
+    display: none; /* Hidden by default, shown on mobile */
+    width: 30px;
+    height: 22px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1010; /* Above mobile nav panel but below an active overlay if any */
+}
+
+.mobile-nav-toggle span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--text-primary-light);
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.mobile-nav-toggle span:nth-child(1) {
+    top: 0px;
+}
+
+.mobile-nav-toggle span:nth-child(2) {
+    top: 9px;
+}
+
+.mobile-nav-toggle span:nth-child(3) {
+    top: 18px;
+}
+
+/* Hamburger Icon Animation (when active/open) */
+.mobile-nav-toggle.active span:nth-child(1) {
+    top: 9px;
+    transform: rotate(135deg);
+}
+
+.mobile-nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+    left: -30px; /* Slide out */
+}
+
+.mobile-nav-toggle.active span:nth-child(3) {
+    top: 9px;
+    transform: rotate(-135deg);
+}
+
+/* Mobile Navigation Panel */
+.mobile-nav {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0; /* Start from the very top, below the header */
+    right: -100%; /* Start off-screen */
+    width: 70%; /* Adjust as needed */
+    max-width: 300px; /* Max width for larger mobile screens */
+    height: 100vh;
+    background: var(--bg-secondary-dark); /* Or a slightly different shade */
+    padding-top: 100px; /* Space for header and some breathing room */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    z-index: 1005; /* Below hamburger icon if it's 'active' */
+    transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow-y: auto; /* If many links */
+}
+
+.mobile-nav.active {
+    right: 0; /* Slide in */
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0 20px;
+    margin: 0;
+    text-align: left;
+}
+
+.mobile-nav ul li {
+    margin-bottom: 5px;
+}
+
+.mobile-nav ul li a {
+    display: block;
+    padding: 15px 10px;
+    color: var(--text-primary-light);
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 6px;
+}
+
+.mobile-nav ul li a:hover {
+    background-color: rgba(0, 188, 212, 0.1); /* Subtle accent hover */
+    color: var(--accent-vibrant);
+}
+
+
+/* --- MODIFY EXISTING Responsive Styles --- */
+
+/* In your @media (max-width: 768px) block (or create one if it doesn't exist for this specifically): */
+@media (max-width: 768px) {
+    /* ... other 768px styles ... */
+
+    header .desktop-nav {
+        display: none; /* Hide desktop nav on mobile */
+    }
+
+    .mobile-nav-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    /* Optional: If the header content was centered, adjust for hamburger on right */
+    header .container {
+        justify-content: space-between; /* Ensure title is left, hamburger right */
+        align-items: center;
+    }
+    header h1 {
+        margin-bottom: 0; /* Remove bottom margin if any was added for column layout */
+    }
+
+    /* Adjust hero margin-top if needed, considering the header height */
+    #hero {
+        padding-top: 80px; /* Example: adjust based on your fixed header height */
+    }
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.mobile-nav-active {
+    overflow: hidden;
+}
+
+/* Hero Section */
+#hero {
+    background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9)), url('./dji_fly_20241116_065110_3_1731720192685_photo_optimized.jpg') no-repeat center center/cover;
+    min-height: 100vh; /* Use min-height for flexibility */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--text-primary-light);
+    padding: 100px 20px 60px; /* Adjust padding, ensure header doesn't overlap */
+    /* margin-top: 70px; Removed as header is fixed and hero takes full viewport */
+}
+
+#hero h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4.5rem; /* Larger for impact */
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+    line-height: 1.2;
+    letter-spacing: -1px; /* Slightly tighter letter spacing */
+}
+
+#hero p {
+    font-size: 1.5rem;
+    font-weight: 300; /* Lighter weight for sub-heading */
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 40px;
+    max-width: 750px;
+    color: var(--text-secondary-light);
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+.btn {
+    display: inline-block;
+    background: var(--accent-vibrant);
+    color: var(--bg-primary-dark); /* Dark text on vibrant button for contrast */
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 50px; /* Pill-shaped button */
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3); /* Subtle glow */
+}
+
+.btn:hover {
+    background: var(--accent-vibrant-darker);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.4);
+}
+.btn.secondary { /* For secondary action like WhatsApp */
+    background: var(--accent-action);
+    box-shadow: 0 5px 15px rgba(255, 111, 0, 0.3);
+}
+.btn.secondary:hover {
+    background: #E65100; /* Darker orange */
+    box-shadow: 0 8px 20px rgba(255, 111, 0, 0.4);
+}
+
+
+/* Sections Styling */
+section {
+    padding: 80px 0;
+    text-align: center;
+}
+section:nth-child(even) {
+    background-color: var(--bg-secondary-dark);
+}
+section:nth-child(odd):not(#hero) { /* Keep hero section specific bg */
+    background-color: var(--bg-primary-dark);
+}
+
+section h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 20px; /* Reduced margin */
+    color: var(--text-primary-light);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+section h3::after { /* Modern underline style */
+    content: '';
+    position: absolute;
+    width: 70px; /* Shorter, thicker underline */
+    height: 4px;
+    background: var(--accent-vibrant);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+section > .container > p:first-of-type { /* Lead paragraph styling */
+    font-size: 1.2rem;
+    color: var(--text-secondary-light);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+/* Experience Specifics (Cards) */
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    text-align: left;
+}
+
+.experience-item {
+    background: var(--bg-secondary-dark);
+    padding: 35px 30px;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-subtle);
+    overflow: hidden; /* For potential ::before elements */
+    position: relative;
+}
+/* Subtle hover effect on card */
+.experience-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 5px;
+    background: var(--accent-vibrant);
+    transition: width 0.4s ease-out;
+}
+.experience-item:hover::before {
+    width: 100%;
+}
+.experience-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.experience-item img { /* SVG Icon placeholder */
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    /* Example: fill with accent color if it's an SVG */
+    /* filter: invert(69%) sepia(80%) saturate(3220%) hue-rotate(145deg) brightness(97%) contrast(101%); /* Teal color */
+}
+.experience-item h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-primary-light);
+}
+.experience-item p {
+    color: var(--text-secondary-light);
+    font-size: 0.95rem;
+}
+
+
+/* Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; /* Slightly larger gap */
+    margin-top: 50px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 250px; /* Taller images */
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.4s ease, box-shadow 0.4s ease;
+    filter: grayscale(30%) brightness(0.9); /* Subtle desaturation */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%) brightness(1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Contact Section */
+#contact {
+    background-color: var(--bg-secondary-dark); /* Consistent dark */
+}
+#contact h3::after {
+    background: var(--accent-action); /* Use other accent for variety */
+}
+
+#contact .container > p {
+    color: var(--text-secondary-light);
+}
+#contact p strong {
+    color: var(--text-primary-light);
+}
+#contact p a {
+    color: var(--accent-vibrant);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+#contact p a:hover {
+    color: var(--accent-vibrant-darker);
+    text-decoration: underline;
+}
+
+#contact-form {
+    margin-top: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+#contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-secondary-light);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    background-color: #2D2D2D; /* Slightly lighter input bg */
+    color: var(--text-primary-light);
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-vibrant);
+    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
+}
+#contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+#contact-form button[type="submit"] { /* This button uses the .btn class styles */
+    width: 100%;
+}
+
+#contact .btn.whatsapp-btn { /* Special styling for WhatsApp button if needed */
+    background: #25D366;
+    color: white;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+#contact .btn.whatsapp-btn:hover {
+    background: #1DA851;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+
+/* Footer */
+footer {
+    background: #0A0A0A; /* Even darker for footer */
+    color: var(--text-secondary-light);
+    text-align: center;
+    padding: 40px 0;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-subtle);
+}
+footer p a {
+    color: var(--accent-vibrant);
+    text-decoration: none;
+    font-weight: 600;
+}
+footer p a:hover {
+    color: var(--accent-vibrant-darker);
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    #hero h2 {
+        font-size: 3.5rem;
+    }
+    #hero p {
+        font-size: 1.3rem;
+    }
+    section h3 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    header h1 {
+        margin-bottom: 15px;
+    }
+    header nav ul {
+        margin-top: 10px;
+    }
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+    #hero {
+        padding-top: 150px; /* Increased padding for taller mobile header */
+    }
+    #hero h2 {
+        font-size: 2.8rem;
+    }
+    #hero p {
+        font-size: 1.2rem;
+    }
+    section h3 {
+        font-size: 2.2rem;
+    }
+    .experience-grid {
+        grid-template-columns: 1fr; /* Stack items on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    #hero h2 {
+        font-size: 2.2rem;
+        letter-spacing: -0.5px;
+    }
+    #hero p {
+        font-size: 1.1rem;
+    }
+    .btn {
+        padding: 12px 28px;
+        font-size: 1rem;
+    }
+    section h3 {
+        font-size: 2rem;
+    }
+    .container {
+        padding: 0 15px;
+    }
+    header nav ul li {
+        margin-left: 20px; /* Reduce nav link margin */
+    }
+}
