@@ -127,11 +127,12 @@ header nav ul li a:hover {
 }
 .company_log{
     display: inline-block;
-    width: 250px;
-    background-image: url(./model1-removebg-preview.png);
-    height: 65px;
+    width: 68px;
+    background-image: url(./logo.png);
+    height: 60px;
     background-position: center;
-    background-size: 180px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 /* --- ADD THESE STYLES for Hamburger Menu --- */
 
