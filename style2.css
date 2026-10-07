@@ -61,7 +61,7 @@ header {
     backdrop-filter: blur(10px); /* Frosted glass effect */
     -webkit-backdrop-filter: blur(10px);
     color: var(--text-primary-light);
-    padding: 1rem 0;
+    padding: 0.6rem 0;
     position: fixed;
     width: 100%;
     top: 0;
@@ -127,9 +127,9 @@ header nav ul li a:hover {
 }
 .company_log{
     display: inline-block;
-    width: 68px;
+    width: 125px;
     background-image: url(./logo.png);
-    height: 60px;
+    height: 110px;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -283,7 +283,7 @@ body.mobile-nav-active {
     align-items: center;
     text-align: center;
     color: var(--text-primary-light);
-    padding: 100px 20px 60px; /* Adjust padding, ensure header doesn't overlap */
+    padding: 150px 20px 60px; /* Adjust padding, ensure header doesn't overlap */
     /* margin-top: 70px; Removed as header is fixed and hero takes full viewport */
 }
 
@@ -467,12 +467,12 @@ section > .container > p:first-of-type { /* Lead paragraph styling */
 
 /* About Page */
 .about-page {
-    padding-top: 160px; /* Clear the fixed header since this is a standalone page */
+    padding-top: 190px; /* Clear the fixed header since this is a standalone page */
 }
 
 /* Gallery Page */
 .gallery-page {
-    padding-top: 160px; /* Clear the fixed header since this is a standalone page */
+    padding-top: 190px; /* Clear the fixed header since this is a standalone page */
 }
 
 .about-content {
@@ -701,6 +701,11 @@ footer p a:hover {
     header h1 {
         margin-bottom: 15px;
     }
+    .company_log {
+        width: 90px;
+        height: 79px;
+        margin-bottom: 8px;
+    }
     header nav ul {
         margin-top: 10px;
     }
@@ -709,7 +714,7 @@ footer p a:hover {
         margin: 10px 0;
     }
     #hero {
-        padding-top: 150px; /* Increased padding for taller mobile header */
+        padding-top: 190px; /* Increased padding for taller mobile header */
     }
     #hero h2 {
         font-size: 2.8rem;
