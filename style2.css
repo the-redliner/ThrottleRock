@@ -742,3 +742,7 @@ footer p a:hover {
         margin-left: 20px; /* Reduce nav link margin */
     }
 }
+/* Keep the gallery within narrow mobile viewports. */
+@media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: minmax(0, 1fr); }
+}
