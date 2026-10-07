@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Throttle Rock//Enduro Events//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:anjur-enduro-20261011@throttlerock.in
+DTSTAMP:20261007T084500Z
+DTSTART:20261011T023000Z
+SUMMARY:Throttle Rock - Anjur Hill Enduro
+LOCATION:Anjur Hill Sunset Point
+GEO:12.7075133;80.0146532
+DESCRIPTION:Enduro morning with Throttle Rock. Starts at 8:00 AM IST. Contact the organizer for ride details.
+URL:https://www.throttlerock.in/events.html
+END:VEVENT
+END:VCALENDAR
