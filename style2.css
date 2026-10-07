@@ -470,6 +470,11 @@ section > .container > p:first-of-type { /* Lead paragraph styling */
     padding-top: 160px; /* Clear the fixed header since this is a standalone page */
 }
 
+/* Gallery Page */
+.gallery-page {
+    padding-top: 160px; /* Clear the fixed header since this is a standalone page */
+}
+
 .about-content {
     max-width: 820px;
     margin: 0 auto;
