@@ -276,6 +276,11 @@ body.lightbox-open {
     overflow: hidden;
 }
 
+/* Prevent body scroll when a modal (e.g. the event popup) is open */
+body.modal-open {
+    overflow: hidden;
+}
+
 /* Hero Section */
 #hero {
     position: relative;
@@ -661,6 +666,133 @@ section > .container > p:first-of-type { /* Lead paragraph styling */
     .lightbox-close { width: 40px; height: 40px; font-size: 1.2rem; top: 10px; right: 10px; }
     .lightbox-prev { left: 10px; }
     .lightbox-next { right: 10px; }
+}
+
+/* Event Popup (landing page) */
+.event-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.85);
+    z-index: 2200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.event-popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.event-popup {
+    position: relative;
+    background: var(--bg-secondary-dark);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    max-width: 420px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.event-popup-overlay.active .event-popup {
+    transform: translateY(0);
+}
+
+.event-popup img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.event-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(18, 18, 18, 0.7);
+    color: var(--text-primary-light);
+    border: 1px solid var(--border-subtle);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    font-size: 1.2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    z-index: 2;
+}
+
+.event-popup-close:hover {
+    background: var(--accent-vibrant);
+    color: var(--bg-primary-dark);
+}
+
+.event-popup-body {
+    padding: 22px 24px 26px;
+}
+
+.event-popup-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-vibrant);
+    margin-bottom: 8px;
+}
+
+.event-popup-body h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+    color: var(--text-primary-light);
+}
+
+.event-popup-meta {
+    color: var(--text-secondary-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.event-popup-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.event-popup-actions .btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+}
+
+.event-popup-link {
+    text-align: center;
+    color: var(--accent-action);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.event-popup-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .event-popup { max-width: 92vw; }
+    .event-popup img { height: 180px; }
 }
 
 /* Contact Section */
