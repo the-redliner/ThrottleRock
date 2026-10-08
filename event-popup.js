@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.classList.remove('active');
         document.body.classList.remove('modal-open');
         sessionStorage.setItem(STORAGE_KEY, '1');
-        setTimeout(function () { overlay.remove(); }, 300);
+        setTimeout(function () { overlay.remove(); }, 350);
     }
 
     overlay.querySelector('.event-popup-close').addEventListener('click', closePopup);
@@ -40,8 +40,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.key === 'Escape' && overlay.classList.contains('active')) closePopup();
     });
 
+    // Double rAF: guarantees the browser has painted the popup's initial
+    // (scaled-down, transparent) state before the "active" class flips it,
+    // so the zoom-in transition reliably plays instead of snapping in.
     requestAnimationFrame(function () {
-        overlay.classList.add('active');
-        document.body.classList.add('modal-open');
+        requestAnimationFrame(function () {
+            overlay.classList.add('active');
+            document.body.classList.add('modal-open');
+        });
     });
 });
