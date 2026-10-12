@@ -6,7 +6,7 @@ body.event-completed .event-completed-badge{display:flex;align-items:center;just
 @media(max-width:600px){body.event-completed .event-completed-badge{font-size:20px;padding:12px 22px;border-width:4px;white-space:normal;max-width:85vw}}
 .event-back{display:inline-block;color:#bbc3b5;text-decoration:none;font:700 13px 'Lato',sans-serif;text-transform:uppercase;letter-spacing:.1em;margin-bottom:28px}
 .event-back:hover{color:var(--lime)}
-.events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:40px}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,320px));gap:28px;margin-top:40px}
 .event-card{display:block;border:1px solid #394331;border-radius:14px;overflow:hidden;background:#192015;text-decoration:none;color:inherit;transition:transform .25s ease,box-shadow .25s ease}
 .event-card:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,.35)}
 .event-card:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
