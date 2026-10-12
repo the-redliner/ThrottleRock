@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 '<h3 id="event-popup-title">Anjur Hill Enduro</h3>' +
                 '<p class="event-popup-meta">Sunday, 11 October &middot; 8:00 AM IST<br>Anjur Hill Sunset Point</p>' +
                 '<div class="event-popup-actions">' +
-                    '<a href="events.html" class="btn">View Event Details</a>' +
+                    '<a href="events-anjur-hill-enduro.html" class="btn">View Event Details</a>' +
                     '<a href="https://wa.me/919840671730?text=Hi!%20I\'d%20like%20to%20join%20the%20Throttle%20Rock%20Enduro%20event%20at%20Anjur%20Hill%20Sunset%20Point%20on%20Sunday%2C%2011%20October%202026%20at%208%3A00%20AM.%20Please%20share%20the%20ride%20details." target="_blank" rel="noopener noreferrer" class="event-popup-link">Join via WhatsApp &#8599;</a>' +
                 '</div>' +
             '</div>' +
